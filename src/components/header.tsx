@@ -1,9 +1,17 @@
+'use client';
 import Logo from '@/components/logo';
 import Address from './address';
 import WorkingTime from './working-time';
 import Link from 'next/link';
+import { useCallPopupStore } from '@/store/call-popup';
 
 function Header() {
+  const { setShowCallPopup } = useCallPopupStore();
+
+  function handleClickOnCallButton() {
+    setShowCallPopup(true);
+  }
+
   return (
     <header className='relative z-10 border-b-white/60 border-b'>
       <div className='container py-6 flex justify-between items-start'>
@@ -23,7 +31,9 @@ function Header() {
             </Link>
             <WorkingTime />
           </div>
-          <button className='font-gilroy text-xl leading-6 text-white py-4 px-8 border-2 transition border-orange hover:bg-orange'>
+          <button
+            className='font-gilroy text-xl leading-6 text-white py-4 px-8 border-2 transition border-orange hover:bg-orange'
+            onClick={handleClickOnCallButton}>
             Заказать звонок
           </button>
         </div>

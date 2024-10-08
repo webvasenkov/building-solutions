@@ -1,8 +1,16 @@
 import Link from 'next/link';
+import cn from 'clsx';
 
-function Address() {
+type Props = {
+  className?: string;
+};
+
+function Address({ className }: Props) {
   return (
-    <Link className='text-white/60 transition hover:text-white' href='https://yandex.by/maps/-/CDXe6Ti1' target='_blank'>
+    <Link
+      className={cn('text-white/60 transition hover:text-white', className)}
+      href='https://yandex.by/maps/-/CDXe6Ti1'
+      target='_blank'>
       РБ, г. Минск, ул. Ленина, 1
     </Link>
   );

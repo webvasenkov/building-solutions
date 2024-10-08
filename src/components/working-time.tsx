@@ -1,6 +1,12 @@
-function WorkingTime() {
+import cn from 'clsx';
+
+type Props = {
+  className?: string;
+};
+
+function WorkingTime({ className }: Props) {
   return (
-    <div className='flex flex-col w-max text-white/60 gap-1'>
+    <div className={cn('flex flex-col w-max text-white/60 gap-1', className)}>
       <p>
         пн – пт: с <time>09:00</time> до <time>18:00</time>
       </p>

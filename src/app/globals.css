@@ -5,9 +5,28 @@
 @tailwind utilities;
 
 body {
-  @apply text-base;
+  @apply text-base bg-white font-helvetica;
 }
 
 .swiper-wrapper {
-  align-items: flex-end;
+  @apply items-end;
+}
+
+::selection {
+  @apply bg-dark-green;
+  @apply text-white;
+}
+
+input[type='checkbox'] {
+  @apply m-0 w-6 h-6 border border-dark-green appearance-none cursor-pointer grid place-items-center transition focus:border-orange outline-none;
+}
+
+
+input[type='checkbox']::before {
+  content: url('/icons/check.svg');
+  @apply transition opacity-0 scale-0;
+}
+
+input[type='checkbox']:checked::before {
+  @apply opacity-100 scale-100;
 }

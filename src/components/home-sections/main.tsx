@@ -1,4 +1,7 @@
 'use client';
+import { useRef } from 'react';
+import { useCallPopupStore } from '@/store/call-popup';
+import { m } from 'framer-motion';
 import ArrowUpRightIcon from '@public/icons/arrow-up-right.svg';
 import BarnhouseImage from '@public/images/barnhouse.webp';
 import TownhouseImage from '@public/images/townhouse.webp';
@@ -6,21 +9,37 @@ import Button from '@/components/button';
 import Link from 'next/link';
 import Image from 'next/image';
 import MainTextSlider from '@/components/main-text-slider';
-import { useRef } from 'react';
 
 function MainSection() {
   const mainRef = useRef<HTMLElement | null>(null);
+  const { setShowCallPopup } = useCallPopupStore();
+
+  function handleClickOnPriceButton() {
+    setShowCallPopup(true);
+  }
 
   return (
     <main
       className='relative bg-[url("/images/bg.webp")] bg-no-repeat bg-cover bg-center pt-[128.4px] pb-[188px] -mt-[128.4px]'
       ref={mainRef}>
       <div className='relative z-10 mt-[140px] container text-white flex justify-between items-start gap-16'>
-        <div className='max-w-[747px] w-full'>
+        <m.div
+          initial={{ opacity: 0, x: -24 }}
+          animate={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ ease: 'easeIn', duration: '0.42' }}
+          className='max-w-[747px] w-full'>
           <MainTextSlider mainRef={mainRef} />
-          <Button className='mt-8'>Узнать стоимость</Button>
-        </div>
-        <div className='grid grid-cols-2 gap-0'>
+          <Button className='mt-8' onClick={handleClickOnPriceButton}>
+            Узнать стоимость
+          </Button>
+        </m.div>
+        <m.div
+          initial={{ opacity: 0, x: 24 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ ease: 'easeIn', duration: '0.75' }}
+          viewport={{ once: true }}
+          className='grid grid-cols-2 gap-0'>
           <div className='bg-green h-[272px] aspect-square p-6 flex flex-col justify-between'>
             <h3 className='font-gilroy font-extrabold text-[22px] leading-[1.3]'>
               Оформление рассрочки по ставке от 15% годовых
@@ -69,7 +88,7 @@ function MainSection() {
               <ArrowUpRightIcon className='transition group-hover:opacity-80' />
             </Link>
           </div>
-        </div>
+        </m.div>
       </div>
       <div className='absolute inset-0 bg-black/30 z-0'></div>
     </main>

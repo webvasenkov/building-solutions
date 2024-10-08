@@ -1,7 +1,9 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import Header from '@/components/header';
 import localFont from 'next/font/local';
+import Header from '@/components/header';
+import Footer from '@/components/footer';
+import InitialWrapper from '@/components/initial-wrapper';
 
 const involve = localFont({
   src: './fonts/InvolveMedium.otf',
@@ -38,8 +40,11 @@ export default function RootLayout({
     <html lang='ru'>
       <body
         className={`${involve.variable} ${gilroy.variable} ${helvetica.variable}`}>
-        <Header />
-        {children}
+        <InitialWrapper>
+          <Header />
+          {children}
+          <Footer />
+        </InitialWrapper>
       </body>
     </html>
   );
