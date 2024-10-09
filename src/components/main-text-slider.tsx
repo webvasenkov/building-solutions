@@ -49,15 +49,14 @@ function MainTextSlider({ mainRef }: Props) {
       slidesPerView={1}
       onRealIndexChange={handleOnRealIndexChange}
       autoplay={{ delay: 6000 }}
-      modules={[Autoplay]}
-      >
+      modules={[Autoplay]}>
       {slides.map((slide, idx) => {
         return (
           <SwiperSlide className='cursor-default' key={idx}>
-            <h2 className='font-involve text-[64px] leading-[1.3]'>
+            <h2 className='font-involve font-medium text-[28px] lg:text-[36px] xl:text-[64px] leading-[1.2] sm:leading-[1.3]'>
               {slide.title}
             </h2>
-            <p className='font-helvetica font-normal mt-4 text-[26px] leading-[1.4]'>
+            <p className='font-helvetica font-normal mt-3 sm:mt-4 text-base sm:text-[26px] leading-[1.3] sm:leading-[1.4]'>
               {slide.text}
             </p>
           </SwiperSlide>
@@ -65,17 +64,20 @@ function MainTextSlider({ mainRef }: Props) {
       })}
       {mainRef.current &&
         createPortal(
-          <ul className='absolute left-1/2 -translate-x-1/2 bottom-16 flex gap-3 items-center z-10'>
+          <ul className='absolute left-1/2 -translate-x-1/2 bottom-6 sm:bottom-16 flex gap-3 items-center z-10'>
             {Array.from({ length: slides.length }).map((_, idx) => {
               const isActiveSlide = realIdx == idx;
 
               return (
                 <li key={idx}>
                   <button
-                    className={cn('rounded-full transition hover:bg-light-orange', {
-                      'bg-orange w-6 h-2': isActiveSlide,
-                      'bg-white w-2 h-2': !isActiveSlide,
-                    })}
+                    className={cn(
+                      'rounded-full transition hover:bg-light-orange',
+                      {
+                        'bg-orange w-6 h-2': isActiveSlide,
+                        'bg-white w-2 h-2': !isActiveSlide,
+                      },
+                    )}
                     onClick={handleClickOnPaginationButton(idx)}
                   />
                 </li>

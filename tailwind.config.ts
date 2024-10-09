@@ -22,15 +22,16 @@ const config: Config = {
         'light-orange': '#F39779',
       },
     },
-    screens: {
-      sm: '640px',
-      md: '768px',
-      lg: '1024px',
-      xl: '1280px',
-      '2xl': '1356px',
-    },
     container: {
       center: true,
+      padding: {
+        DEFAULT: '20px',
+        sm: '2rem',
+        md: '3rem',
+        lg: '4rem',
+        xl: '5rem',
+        '2xl': '90px',
+      },
     },
   },
   plugins: [],

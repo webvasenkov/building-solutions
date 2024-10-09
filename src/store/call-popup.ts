@@ -1,3 +1,4 @@
+import { preventScrollByCondition } from '@/lib/helper';
 import { create } from 'zustand';
 
 interface CallPopupState {
@@ -8,5 +9,8 @@ interface CallPopupState {
 export const useCallPopupStore = create<CallPopupState>()((set) => ({
   showCallPopup: false,
   setShowCallPopup: (showCallPopup: boolean) =>
-    set((state) => ({ ...state, showCallPopup })),
+    set((state) => {
+      preventScrollByCondition(showCallPopup);
+      return { ...state, showCallPopup };
+    }),
 }));

@@ -1,5 +1,6 @@
 import './globals.css';
 import type { Metadata } from 'next';
+import { Toaster } from 'sonner';
 import localFont from 'next/font/local';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
@@ -29,6 +30,7 @@ const helvetica = localFont({
 
 export const metadata: Metadata = {
   title: 'Строительные решения - строительная компания',
+  openGraph: { images: '/images/room.webp' },
 };
 
 export default function RootLayout({
@@ -41,6 +43,7 @@ export default function RootLayout({
       <body
         className={`${involve.variable} ${gilroy.variable} ${helvetica.variable}`}>
         <InitialWrapper>
+          <Toaster position='top-center' duration={1260} richColors />
           <Header />
           {children}
           <Footer />
