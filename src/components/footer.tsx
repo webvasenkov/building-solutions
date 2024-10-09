@@ -5,8 +5,8 @@ import Link from 'next/link';
 
 function Footer() {
   return (
-    <footer className='bg-green mt-[140px] text-white font-helvetica font-base'>
-      <div className='container py-16 flex flex-col items-center text-center xl:text-left xl:items-start xl:flex-row'>
+    <footer className='bg-green mt-[72px] sm:mt-[140px] text-white font-helvetica font-base'>
+      <div className='container py-12 sm:py-16 flex flex-col items-center text-center xl:text-left xl:items-start xl:flex-row'>
         <div>
           <Logo />
           <p className='mt-4 text-[14px] sm:text-base leading-[1.3] sm:leading-[1.4]'>

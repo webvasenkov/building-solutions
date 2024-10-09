@@ -25,7 +25,6 @@ function CallPopup() {
   const { showCallPopup, setShowCallPopup } = useCallPopupStore();
 
   function handleClickOnCloseButton() {
-
     setShowCallPopup(false);
   }
 
@@ -71,7 +70,7 @@ function CallPopup() {
                 <h2 className='font-gilroy text-[20px] leading-[1.2] sm:text-[32px] sm:leading-[1.4]'>
                   Обратный звонок
                 </h2>
-                <p className='mt-2 sm:mt-1 text-[14px] sm:text-base'>
+                <p className='mt-2 sm:mt-1 text-[14px] leading-[1.3] sm:text-base sm:leading-[1.4]'>
                   Заполните форму ниже, и наш специалист свяжется с вами
                   в ближайшее время.
                 </p>
