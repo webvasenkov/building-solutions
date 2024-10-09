@@ -51,7 +51,7 @@ function CallPopup() {
             transition={{ ease: 'easeInOut', duration: '0.42' }}
             className='fixed inset-0 bg-[#011B1B]/60 z-10'
             onClick={handleClickOnCloseButton}></m.div>
-          <div className='fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 sm:max-w-[660px] w-full z-20 px-[20px] sm:px-0 overflow-auto'>
+          <div className='fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 sm:max-w-[660px] w-full z-20 px-[20px] sm:px-0'>
             <m.div
               className='bg-white'
               initial={{ opacity: 0, y: 24 }}
@@ -87,6 +87,7 @@ function CallPopup() {
                       id='phone'
                       type='text'
                       placeholder='+375 (99) 999-99-99'
+                      inputMode='numeric'
                       register={register}
                     />
                     {errors?.phone && (

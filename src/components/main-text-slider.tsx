@@ -4,24 +4,7 @@ import { Autoplay } from 'swiper/modules';
 import { createPortal } from 'react-dom';
 import { useState } from 'react';
 import cn from 'clsx';
-
-const slides = [
-  {
-    title:
-      'Создадим ваш идеальный дом в установленные сроки и с 10-летней гарантией',
-    text: 'Без головной боли и отклонений от сметы строительства',
-  },
-  {
-    title:
-      'Мы создаем надежные и современные дома для вашего уютного проживания',
-    text: 'В своей работе мы применяем современные технологии и специализированное строительное оборудование',
-  },
-  {
-    title:
-      'В нашей команде работают квалифицированные сотрудники с опытом работы от 5 лет',
-    text: 'Мы оперативно выполняем весь спектр строительных работ',
-  },
-];
+import { mainTextSlides } from '@/lib/dummy-data';
 
 type Props = {
   mainRef: React.MutableRefObject<null | HTMLElement>;
@@ -30,6 +13,7 @@ type Props = {
 function MainTextSlider({ mainRef }: Props) {
   const [swiperClass, setSwiperClass] = useState<SwiperClass | null>(null);
   const [realIdx, setRealIdx] = useState<number>(0);
+  const paginationButtons = Array.from({ length: mainTextSlides.length });
 
   function handleOnRealIndexChange(swiperClass: SwiperClass) {
     setRealIdx(swiperClass.realIndex);
@@ -50,7 +34,7 @@ function MainTextSlider({ mainRef }: Props) {
       onRealIndexChange={handleOnRealIndexChange}
       autoplay={{ delay: 6000 }}
       modules={[Autoplay]}>
-      {slides.map((slide, idx) => {
+      {mainTextSlides.map((slide, idx) => {
         return (
           <SwiperSlide className='cursor-default' key={idx}>
             <h2 className='font-involve font-medium text-[28px] lg:text-[36px] xl:text-[64px] leading-[1.2] sm:leading-[1.3]'>
@@ -65,7 +49,7 @@ function MainTextSlider({ mainRef }: Props) {
       {mainRef.current &&
         createPortal(
           <ul className='absolute left-1/2 -translate-x-1/2 bottom-6 sm:bottom-16 flex gap-3 items-center z-10'>
-            {Array.from({ length: slides.length }).map((_, idx) => {
+            {paginationButtons.map((_, idx) => {
               const isActiveSlide = realIdx == idx;
 
               return (
@@ -78,8 +62,9 @@ function MainTextSlider({ mainRef }: Props) {
                         'bg-white w-2 h-2': !isActiveSlide,
                       },
                     )}
-                    onClick={handleClickOnPaginationButton(idx)}
-                  />
+                    onClick={handleClickOnPaginationButton(idx)}>
+                    <span className='sr-only'>кнопка пагинации #{idx}</span>
+                  </button>
                 </li>
               );
             })}

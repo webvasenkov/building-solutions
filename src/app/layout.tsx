@@ -30,6 +30,7 @@ const helvetica = localFont({
 
 export const metadata: Metadata = {
   title: 'Строительные решения - строительная компания',
+  description: 'Строительная компания',
   openGraph: { images: '/images/room.webp' },
 };
 

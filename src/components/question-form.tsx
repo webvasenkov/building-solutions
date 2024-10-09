@@ -51,6 +51,7 @@ function QuestionForm() {
             id='phone'
             type='text'
             placeholder='+375 (99) 999-99-99'
+            inputMode='numeric'
             register={register}
           />
           {errors?.phone && (
